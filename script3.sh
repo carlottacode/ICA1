@@ -12,11 +12,9 @@ for seq in ${files_hst_s1};
         do
         IFS='_'
         read -r d1 d2 <<< "${seq}"
-        echo "${d1}"
 	unset IFS
-        #echo "${seq}"
-        #echo "${d1}""${seq2}"
-        hisat2 -q -t -x ./ICA1/Tcongo_genome/Tcongo_index -1 "${seq}" -2 "${d1}""${seq2}" -S "${d1}""${sam_tail}"\
-	|samtools -o "${d1}""${bam_tail}" "${d1}""${sam_tail}"
+        bowtie2 -t -p 8 -x ./ICA1/Tcongo_genome/Tcongo -1 "${seq}" -2 "${d1}""${seq2}"|samtools view -Sb - | samtools sort - -o "${d1}""${bam_tail}"
+
 done
 
+samtools index -@ 8 -M ./ICA1/fastq/*.sorted.bam
