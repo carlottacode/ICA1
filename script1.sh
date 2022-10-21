@@ -1,9 +1,10 @@
 #!/usr/bin/bash
-mkdir ./working_dir
-cp -r /localdisk/data/BPSM/ICA1/ ./working_dir/
+cp -r /localdisk/data/BPSM/ICA1/ .
 
 
-mkdir ./working_dir/ICA1/fastqc.out
-fastqc -o ./working_dir/ICA1/fastqc.out -t 6 ./working_dir/ICA1/fastq/*.fq.gz
+mkdir ./ICA1/fastqc.out
 
+echo 'Quality control initiated...'
+fastqc -o ./ICA1/fastqc.out -q -t 14 ./ICA1/fastq/*.fq.gz
+echo 'Quality control complete.'
 
