@@ -11,3 +11,6 @@ source script3.sh
 
 echo 'Converting  BAM files to BED files and using bedtools intersect'
 source script4.sh
+
+echo 'Calculating the average gene expression for each sample'
+source script5.sh
