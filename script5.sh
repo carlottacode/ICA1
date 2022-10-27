@@ -1,10 +1,12 @@
 #!/usr/bin/bash
-echo "\t" > headers.txt
-echo "\t " >> headers.txt
+echo 'Gene' > headers.txt
+echo 'Gene Descriptions' >> headers.txt
+
 #Get BED file ready for fold change analysis
-#cut -f 4 TriTrypDB-46_TcongolenseIL3000_2019.bed > gene_names.file
 cut -f 4,5 ./ICA1/TriTrypDB-46_TcongolenseIL3000_2019.bed > gene_descriptions.txt
-#cut -f 5 TriTrypDB-46_TcongolenseIL3000_2019.bed > gene_descriptions.file
+
+
+
 mkdir Average
 experiments=$(ls ./experiments)
 for experiment in ${experiments};
@@ -16,7 +18,7 @@ for experiment in ${experiments};
 #   	head ./Average/average."${experiment}".txt
 	for replicate in ${replicates};
                 do
-		echo ${experiment}
+#		echo ${experiment}
 #                echo ${replicate}
                 IFS='_'
                 read d1 d2 <<< "${replicate}"
@@ -44,11 +46,10 @@ for experiment in ${experiments};
 	echo "${experiment}" >> headers.txt
 done
 
-cat headers.txt | paste -s headers.txt > line_headers.txt
-head -3 gene_descriptions.txt
 
-paste line_headers.txt  gene_descriptions.txt>output.txt
-head -3 output.txt
+cat headers.txt | paste -s headers.txt > line_headers.txt
+cat line_headers.txt gene_descriptions.txt > output.txt
+head -2 output.txt
 
 
 
