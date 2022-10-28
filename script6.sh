@@ -1,15 +1,29 @@
+#!/usr/bin/bash
+#Calculating fold change
+unset experiments
 
-cut -f 4,5 ./ICA1/TriTrypDB-46_TcongolenseIL3000_2019.bed > gene_name.txt
-head gene_name.txt
-
-
-cut -f 6 ./ICA1/fastq/Tco-6114.sorted.bam.multicov|paste - gene_name.txt >gene_name1.txt
-mv gene_name1.txt  gene_name.txt
-
-cut -f 6 ./ICA1/fastq/Tco-6114.sorted.bam.multicov|paste - gene_name.txt > gene_name1.txt
-mv gene_name1.txt gene_name.txt
-
-head gene_name.txt
+experiments=$(ls ./experiments/)
+echo "List of samples: "
+for experiment in ${experiments};
 
 
+	do
+	echo ${experiment::-7}
+	done
+#sample1=Clone1.24.Induced
+#sample2=WT.24.Induced
+read -p "From the list of samples above enter the first sample: " sample1
 
+read -p "From the list of samples above enter the sample you'd like to compare this to " sample2
+find ./Average/average.${sample1}.sample.txt
+find ./Average/average.${sample2}.sample.txt
+
+paste ./Average/average.${sample1}.sample.txt ./Average/average.${sample2}.sample.txt > temp.txt
+
+
+cat temp.txt |source foldchange.awk > temp_fc.txt
+
+echo "${sample1}"/"${sample2}"_foldchange > temp_title.txt
+
+cat temp_title.txt temp_fc.txt > foldchange_output.txt
+head -6 foldchange_output.txt
