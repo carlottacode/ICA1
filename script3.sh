@@ -14,7 +14,7 @@ for seq in ${files_hst_s1};
         IFS='_'
         read -r d1 d2 <<< "${seq}"
 	unset IFS
-        bowtie2 -p 16 -q -x ./ICA1/Tcongo_genome/Tcongo -1 "${seq}" -2 "${d1}""${seq2}"|samtools view -Sb - | samtools sort - -o "${d1}""${bam_tail}"
+        bowtie2 -p 16 --quiet -x ./ICA1/Tcongo_genome/Tcongo -1 "${seq}" -2 "${d1}""${seq2}"|samtools view -Sb - | samtools sort - -o "${d1}""${bam_tail}"
 
 done
 
