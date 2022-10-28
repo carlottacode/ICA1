@@ -3,6 +3,9 @@
 echo 'Copying files into your current directory'
 source script1.sh
 
+echo 'Analysis of Fastqc output'
+source qc_script.sh
+
 echo 'Building genome index'
 source script2.sh
 

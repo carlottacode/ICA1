@@ -7,16 +7,21 @@ qc_seqs=$(ls -d ./ICA1/fastqc.out/*fastqc)
 
 for qc_seq in ${qc_seqs};
 	do
-	echo 'Parsing '${qc_seq}' for quality control results'
-	awk 'BEGIN{FS="\t";}{if($1=="FAIL"){print $0}}' ${qc_seq}/summary.txt
-	grep 'poor' ${qc_seq}/fastqc_data.txt
+	echo " "
+	echo 'Parsing '${qc_seq}' for quality control results:'
+	grep -i 'filename' ${qc_seq}/fastqc_data.txt
 	grep '>>Basic Statistics' ${qc_seq}/fastqc_data.txt
-	grep -i 'sequence' ${qc_seq}/fastqc_data.txt
+	grep 'poor' ${qc_seq}/fastqc_data.txt
+	grep -i 'Total sequences' ${qc_seq}/fastqc_data.txt
+	grep 'length' ${qc_seq}/fastqc_data.txt
+	grep '%' ${qc_seq}/fastqc_data.txt
+	echo "FAIL flags:"
 	grep 'fail' ${qc_seq}/fastqc_data.txt
+	echo "WARN flags:"
 	grep 'warn' ${qc_seq}/fastqc_data.txt
-#	head -10 ${qc_seq}/fastqc_data.txt
+	echo " "
+	echo '---'
 done
-#head fastqc_data.txt
 
-echo 'If following this analysis you would like to remove files from the analysis...'
-read -p 'please enter files you no longer want to analyse' remov_files 
+#echo 'If following this analysis you would like to remove files from the analysis...'
+#read -p 'please enter files you no longer want to analyse, separate by commas, using the filenames displayed above' remov_files 
