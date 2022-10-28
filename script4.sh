@@ -8,8 +8,6 @@ for bam in ${bam_files};
 	bedtools multicov -bams ${bam} -bed ./ICA1/TriTrypDB-46_TcongolenseIL3000_2019.bed > "${bam}".multicov
 done
 
-#awk 'BEGIN{FS="\t";}{if($NF>150){print $0;}}' Tco-6114.sorted.bam.multicov
-
 mkdir experiments
 samples=$(cut -f 2 ./ICA1/fastq/Tco.fqfiles|sort|uniq|grep -v 'SampleType')
 
@@ -22,4 +20,9 @@ for sample in ${samples};
   cat ./ICA1/fastq/Tco.fqfiles|grep "${sample}" | grep 24 | grep 'Induced' > ./experiments/"${sample}".24.Induced.sample
   cat ./ICA1/fastq/Tco.fqfiles|grep "${sample}" | grep 48 | grep 'Induced' > ./experiments/"${sample}".48.Induced.sample
 
+done
+empty_exp=$(find ./experiments -name '*.sample' -size 0)
+for empty_file in ${empty_exp};
+	do
+	rm ${empty_file}
 done
