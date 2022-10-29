@@ -43,7 +43,16 @@ done
 cat headers.txt | paste -s headers.txt > line_headers.txt
 cat line_headers.txt gene_descriptions.txt > output.txt
 
+rm gene_descriptions.txt
+rm line_headers.txt
+rm headers.txt
+
+
+echo ""
+echo "---"
 echo "If you would like to see the gene expression averages for each group please have a look and the output.txt file."
+echo "---"
+echo ""
 
 
 
