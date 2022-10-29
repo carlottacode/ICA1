@@ -27,7 +27,8 @@ for qc_seq in ${qc_seqs};
 done
 
 #The output can be seen in the file fastqc_summary.txt
-echo "If you would like peruse the details of the fastqc analysis further please have a look at the fastqc_summary.txt file."
-
-#echo 'If following this analysis you would like to remove files from the analysis...'
-#read -p 'please enter files you no longer want to analyse, separate by commas, using the filenames displayed above' remov_files 
+echo ""
+echo "---"
+echo "To see further details of the fastqc analysis please have a look at the ./fastqc_summary.txt file."
+echo "---"
+echo ''

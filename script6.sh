@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
 #Listing all samples which could be compared by calculating fold change.
-echo ""
-echo "SCRIPT6"
 echo "---"
 echo "The following groups can be compared by calculating fold change."
 echo "---"
@@ -15,10 +13,13 @@ for experiment in ${experiments};
 	echo ${experiment::-7}
 done
 echo ""
-echo "Please enter the groups as you see them above."
+echo "Enter the groups as you see them above."
 echo ""
-read -p "From the groups above enter Group 1: " sample1
-read -p "From the groups above enter the Group you'd like to compare Group 1 to: " sample2
+echo ''
+echo "Here the 'fold change' is calculated by dividing 'Group 1' by 'Group 2'"
+echo ''
+read -p "Enter Group 1: " sample1
+read -p "Enter Group 2: " sample2
 #find ./Average/average.${sample1}.sample.txt
 #find ./Average/average.${sample2}.sample.txt
 
@@ -33,11 +34,18 @@ cut -f 1,2 output.txt |paste temp.txt - > foldchange_output.txt
 
 #Sorts by absolute value
 cat foldchange_output.txt | sed -r 's/-([0-9]+)/\1-/g;' | sort -nr | sed -r 's/([0-9]+)-/-\1/g;' > sorted_foldchange_output.txt
-mv sorted_foldchange_output.txt foldchange_output.txt
 
+
+#Restore column headers without disrupting the order.
+grep -v 'Gene Descriptions' sorted_foldchange_output.txt > temp.txt
+grep 'Gene Descriptions' sorted_foldchange_output.txt > temp_title.txt
+cat temp_title.txt temp.txt > foldchange_output.txt
+
+#Remove the temporary files.
 rm temp.txt
 rm temp_title.txt
 rm fc_temp.txt
+rm sorted_foldchange_output.txt
 
 echo ""
 echo "---"
@@ -47,7 +55,7 @@ echo ""
 head -10 foldchange_output.txt
 echo ""
 echo "---"
-echo "If you want to see more please look at the foldchange_output.txt file."
+echo "To see more please look at the ./foldchange_output.txt file."
 echo "---"
 echo ""
 

@@ -50,7 +50,7 @@ rm headers.txt
 
 echo ""
 echo "---"
-echo "If you would like to see the gene expression averages for each group please have a look and the output.txt file."
+echo "To see the gene expression averages for each group please have a look at the ./output.txt file."
 echo "---"
 echo ""
 

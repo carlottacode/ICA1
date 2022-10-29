@@ -1,12 +1,10 @@
 #!/usr/bin/bash
-
 #Making a variable which contains all of the Sequence 1 files.
 files_bt_s1=$(ls ./ICA1/fastq/*1.fq.gz)
 
 #Iterating through each Sequence 1 and getting the corresponding Sequence 2.
 #Running the bowtie aligner on each pair of sequences and immediately converting the SAM output to a sorted BAM output.
 unset IFS
-echo 'Aligning sequences...'
 for seq in ${files_bt_s1};
         do
         IFS='_'
@@ -17,5 +15,4 @@ for seq in ${files_bt_s1};
 done
 
 #Indexing all of the sorted BAM files.
-echo 'Indexing using samtools...'
 samtools index -@ 12 -M ./ICA1/fastq/*.sorted.bam
