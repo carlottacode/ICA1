@@ -1,22 +1,21 @@
 #!/usr/bin/bash
-#Run align function outputting in sam format
 
+#Making a variable which contains all of the Sequence 1 files.
+files_bt_s1=$(ls ./ICA1/fastq/*1.fq.gz)
+
+#Iterating through each Sequence 1 and getting the corresponding Sequence 2.
+#Running the bowtie aligner on each pair of sequences and immediately converting the SAM output to a sorted BAM output.
 unset IFS
-seq2='_2.fq.gz'
-sam_tail='.sam'
-bam_tail='.sorted.bam'
-
-files_hst_s1=$(ls ./ICA1/fastq/*1.fq.gz)
-
 echo 'Aligning sequences...'
-for seq in ${files_hst_s1};
+for seq in ${files_bt_s1};
         do
         IFS='_'
         read -r d1 d2 <<< "${seq}"
 	unset IFS
-        bowtie2 -p 16 --quiet -x ./ICA1/Tcongo_genome/Tcongo -1 "${seq}" -2 "${d1}""${seq2}"|samtools view -Sb - | samtools sort - -o "${d1}""${bam_tail}"
+        bowtie2 -p 16 --quiet -x ./ICA1/Tcongo_genome/Tcongo -1 "${seq}" -2 "${d1}"_2.fq.gz|samtools view -@ 16 -Sb - | samtools sort -@ 16 - -o "${d1}".sorted.bam
 
 done
 
+#Indexing all of the sorted BAM files.
 echo 'Indexing using samtools...'
 samtools index -@ 12 -M ./ICA1/fastq/*.sorted.bam

@@ -1,3 +1,10 @@
+#!/usr/bin/bash
+#This awk script calculates fold change.
+#Using the convention of using log base 2 of the fold change.
+#If both gene expression levels being compared are 0 this script will output 0. 
+#If only one gene expression levels being compared is zero the fold change
+# will be calculated using a very small number close to zero - in this case 1e-17.
+
 
 awk 'BEGIN{FS="\t";}
 {
