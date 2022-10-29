@@ -1,3 +1,105 @@
+commit 136f87d16cc6e79be2ff6367f4a01bf29c17fb7f
+Author: B221881-2022 <anon@anon.com>
+Date:   Sat Oct 29 22:26:55 2022 +0100
+
+    Final changes and run check
+
+commit 9f9c50fa4fffb51f887982326b789bc84cbe2f8e
+Author: B221881-2022 <anon@anon.com>
+Date:   Sat Oct 29 16:56:41 2022 +0100
+
+    Sorted foldchange output by decreasing absolute values
+
+commit 32af6cf42ae96887da8c961ae8ec425d4c2fae01
+Author: B221881-2022 <anon@anon.com>
+Date:   Sat Oct 29 14:17:06 2022 +0100
+
+    Added comments on all scripts to make them easy to understand
+
+commit d2a32b97630aa7a3eed1d0ce361e2be3678bffc8
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 28 17:24:58 2022 +0100
+
+    Added fastqc analysis to pipeline
+
+commit a414dfa75b3551162ef4707ecaa47fa59a9b1b24
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 28 16:51:08 2022 +0100
+
+    Working on presenting output of quality control for seqs
+
+commit 80dbed32563ac1d1f6bb644e8d3566fc1702fd3d
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 28 14:54:38 2022 +0100
+
+    Checking pipeline runs successfully
+
+commit df18e24450ace2db4a9cbf50cf85dec34732ac37
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 28 13:49:16 2022 +0100
+
+    Fixed empty file problem
+
+commit ed3788c51c7fe9bd51b61e6c1f1eedd222fd2382
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 28 12:55:40 2022 +0100
+
+    Added capability to calculate fold change for any two samples
+
+commit e13a5d22c05e254deac7f808e12bef57d6b9e12d
+Author: B221881-2022 <anon@anon.com>
+Date:   Thu Oct 27 21:36:20 2022 +0100
+
+    fixed output file but noticed empty Clone2 column
+
+commit 6c9f0496fc909d0b8941a81c0792cb5edf25500c
+Author: B221881-2022 <anon@anon.com>
+Date:   Mon Oct 24 13:40:37 2022 +0100
+
+    Added functionality to output required output file
+
+commit cab0e683b0c6f701a5a4502e20dc3a28b4bff4b7
+Author: B221881-2022 <anon@anon.com>
+Date:   Mon Oct 24 11:03:43 2022 +0100
+
+    Experiment replicates gene expression data pasted in text files
+
+commit 2dfc54bf088d90cd4edd20549adee1ad6af3ac56
+Author: B221881-2022 <anon@anon.com>
+Date:   Sun Oct 23 16:05:59 2022 +0100
+
+    Began adding code to calculate the gene expression average
+
+commit 2a020f69f466be3b1a90b25d4efc244df444b64b
+Author: B221881-2022 <anon@anon.com>
+Date:   Sat Oct 22 00:28:29 2022 +0100
+
+    Initial multicov on all BAM files
+
+commit 2a9763d852a9e7d1780a83cd3611b908a499fc37
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 21 21:46:11 2022 +0100
+
+    Added script4.sh to pipeline
+
+commit d4a53d1336bc8c549b506126cdd966fcdc027e3b
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 21 21:43:19 2022 +0100
+
+    Bowtie2, fixed pipe to BAM output, added script for BAM to BED
+
+commit c9741829adee70e7ee44e38cd09ef8a5dbda2459
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 21 18:10:33 2022 +0100
+
+    HiSat2 started different scripts for tasks 1 and 2
+
+commit 7ad41bd681403fe06605225c6eb3e5b4d72549cf
+Author: B221881-2022 <anon@anon.com>
+Date:   Fri Oct 21 15:08:02 2022 +0100
+
+    Testing use of all_the_things_I_did file
+
 commit 7e6d12e136338c30461f1e9acc9cbd925e8f80c7
 Author: B221881-2022 <anon@anon.com>
 Date:   Fri Oct 21 14:59:31 2022 +0100
